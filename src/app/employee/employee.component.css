@@ -1,0 +1,19 @@
+
+h1{
+    color: #FF0;
+    font-size: 25px;
+}
+
+table{
+    color: #369;
+    font-style: italic
+
+}
+
+td{
+    border: 1px solid #369;
+}
+
+th{
+    border: 1px solid #369;
+}
