@@ -69,4 +69,11 @@ export class UserService {
 			.catch((error:any) => Observable.throw(error.json().error || 'Server error'));
          }
 	}
+
+    public getUserById(usersID:number){
+		return this.http.get(this.BASE_URL + "user/getUser/" + usersID)
+			.map((res:Response) => res.json())
+			.catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+         
+    }
 }

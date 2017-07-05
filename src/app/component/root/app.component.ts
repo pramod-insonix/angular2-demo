@@ -53,6 +53,7 @@ export class AppComponent implements OnInit{
 	}
 
   public addUserComponent(){
+    
     this.httpService.addUser(this.userModel).subscribe(
                         response =>  {
 							if(response.error) { 
@@ -84,6 +85,12 @@ export class AppComponent implements OnInit{
 	}
 
   public updateUserComponent(){
+
+     //JSON.stringify(data)
+    // this.httpService.getUsers().subscribe(data => this.getUsers = data,
+    //      error => alert(error),
+    //      () =>console.log("User Data Loaded from user service.")
+    //      );
     this.httpService.updateUser(this.userModel).subscribe(
                         response =>  {
 							if(response.error) { 
@@ -98,6 +105,32 @@ export class AppComponent implements OnInit{
                        	}
                     );
   }
+
+public getUserById(userId:number){
+
+
+    this.httpService.getUserById(userId).subscribe(data => this.currentUser = data,
+         error => alert(error),
+         () =>this.userModel = new UserModel(this.currentUser.userId,this.currentUser.username,this.currentUser.password,this.currentUser.email,this.currentUser.roleId)
+         );
+  	// this.httpService.getUserById(userId).subscribe(
+		// 				response => {
+		// 					if(response.error) { 
+	  //                       	alert(`The user could not be found, server Error.`);
+	  //                       } else {
+	  //                       	//this.usersList = response.users;
+	  //                       }
+    //                     },
+    //                    error=> { 
+    //                    		alert(`The user could not be deleted, server Error.`);
+    //                    	}
+    //                 );
+}
+
+
+  public resetAddUser(){
+		this.userModel = new UserModel(0,'','','',0);
+	}
 
 
 }

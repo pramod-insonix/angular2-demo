@@ -17,20 +17,45 @@
   <my-employee></my-employee>
 </div>
 <fieldset>
-
+<h3 class="add-user-heading">Add/Upadte User </h3>
 <form>
   <table>
     <tr><td>Username</td><td><input type="text" name="username" placeholder="username" [(ngModel)]="userModel.username"/></td></tr>
     <tr><td>Password</td><td><input type="password" name="password" placeholder="password" [(ngModel)]="userModel.password"/></td></tr>
     <tr><td>Email</td><td><input type="email" name="email" placeholder="email" [(ngModel)]="userModel.email"/></td></tr>
-    <tr><td>Role ID</td><td><input type="number" name="roleId" [(ngModel)]="userModel.roleId"/></td></tr>
-    <tr><td colspan="2"><button (click)="addUserComponent()">Add user</button></td></tr>
+    <!--<tr><td>Role ID</td><td><input type="number" name="roleId" [(ngModel)]="userModel.roleId"/></td></tr>-->
+   
+   <tr>
+     <td>Role ID</td>
+     <td>
+      <select class="form-control" name="roleId" [(ngModel)]="userModel.roleId">
+          <option value='1'> Admin </option>
+          <option value='2'> User </option>
+          <option value='3'> Accounts </option>
+      </select>
+     </td></tr>
+    <tr>
+      <td><button (click)="addUserComponent()">Save</button></td>
+      <td><button  class="btn " (click)="resetAddUser()">Reset</button></td>
+    </tr>
 
   </table>
 </form>
 </fieldset>
  <h3 class="user-list-heading">List of Users</h3>
-<!--<h1>{{getUsers}}</h1>-->
+ <!--<div class="list-users">
+    <ul class="list-group">
+    	<li *ngFor="let user of getUsers" class="list-group-item" 
+          (click)="userSelected(user)"[class.active]="isSelected(user)">{{user.userId}}&nbsp;&nbsp;&nbsp;
+          {{user.username}}&nbsp;&nbsp;&nbsp;
+          {{user.password}}&nbsp;&nbsp;&nbsp;
+          {{user.email}}&nbsp;&nbsp;&nbsp;
+          {{user.roleId}}&nbsp;&nbsp;&nbsp;
+		      <button (click)="deleteUserComponent(user.userId)"> delete user</button>&nbsp;&nbsp;&nbsp;
+          <button (click)="deleteUserComponent(user.userId)"> Edit user</button>
+    </li>
+	</ul>
+</div>-->
                 <table class="table">
                     <tr>
                         <th>Sr.No</th>
@@ -48,7 +73,7 @@
                         <td>{{user.roleId}}</td>
                         <td>
                           <button (click)="deleteUserComponent(user.userId)"> delete user</button>
-                          <button (click)="deleteUserComponent(user.userId)"> Edit user</button>
+                          <button (click)="getUserById(user.userId)"> Edit user</button>
                         </td>
                     </tr>
                 </table>
