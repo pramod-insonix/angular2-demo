@@ -4,8 +4,8 @@ import {Component} from '@angular/core'
 @Component({
     selector : `my-login`,
     //corresponding view template
-    templateUrl : `app/login/login.component.html`,
-    styleUrls : [ `app/login/login.component.css`]
+    templateUrl : `./login.component.html`,
+    styleUrls : [ `./login.component.css`]
 })
 
 
