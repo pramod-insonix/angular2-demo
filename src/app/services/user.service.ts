@@ -63,11 +63,26 @@ export class UserService {
 
 
 	public deleteUser(usersID:number) : Observable<any>{
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+         let cpParams = new URLSearchParams();
+         cpParams.set('id', usersID.toString());
+          let options = new RequestOptions({ headers: cpHeaders, params: cpParams });
          if (confirm("Are you sure you want to delete ?")) {
-		return this.http.delete(this.BASE_URL + "user/" + usersID)
+		return this.http.delete(this.BASE_URL + "user/" + usersID, options)
 			.map((res:Response) => res.json())
 			.catch((error:any) => Observable.throw(error.json().error || 'Server error'));
          }
+
+//  let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+//      let cpParams = new URLSearchParams();
+//      cpParams.set('id', articleId);			
+//      let options = new RequestOptions({ headers: cpHeaders, params: cpParams });
+//      return this.http.delete(this.articleUrl, options)
+// 	   .map(success => success.status)
+// 	   .catch(this.handleError);
+
+
+
 	}
 
     public getUserById(usersID:number){

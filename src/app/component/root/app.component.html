@@ -81,4 +81,12 @@
 
 
 <p>Output : {{getUsers}}</p>
+
+
+<fieldset>
+ Two way binding with proprty and events below :
+ <input type="text" [ngModel]="applicationName" (ngModelChange)="applicationName=$event">
+ <h2>Name of appilcation is {{applicationName}}</h2>
+
+</fieldset>
 </body>

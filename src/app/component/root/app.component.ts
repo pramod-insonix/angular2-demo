@@ -10,13 +10,14 @@ import { UserModel } from '../../model/userModel';
   providers :[UserService]
 })
 
-
+//The export keyword is used so that the
+// component can be used in other modules in the Angular JS application.
+//Components are the most basic building block of an UI in an Angular application. 
 export class AppComponent implements OnInit{
 
   constructor(private httpService: UserService){}
-  private userModel:UserModel = new UserModel( 0 ,'','','',0);
+  public userModel:UserModel = new UserModel( 0 ,'','','',0);
   getUsers :string;
-
   createdUser : string ="Pramod Maurya";
   imagePath : string = 'images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
   isDisable :boolean = false;
