@@ -9,16 +9,19 @@ import {Component, OnInit} from '@angular/core'
 export class UserComponent implements OnInit{
   user_id:number;
   username:string;
+  password:string;
   email:string;
 
   constructor(){  }
 
 
-  addUser(userData){
+  public addUser(userData){
     
   }
 
+  public loginUser(){
   
+  }
 
   
   ngOnInit(){

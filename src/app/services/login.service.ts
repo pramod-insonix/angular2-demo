@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Http, Response, RequestMethod, Headers, RequestOptions } from '@angular/http';
+import { UserModel } from '../model/userModel';
+import {Observable} from 'rxjs/Rx';
+
+
+
 
 @Injectable()
 export class LoginService {
+
+     private BASE_URL:string = 'http://localhost:8080/restful-public-api/';
 
     // Resolve HTTP using the constructor
     // Http returns an Observable with the Response object, versus $http which returns Promises. 
@@ -20,6 +26,8 @@ export class LoginService {
         return this.http.get("http://localhost:8080/restful-public-api/user/allUsers/")
             .map((res: Response) => res.json());;
     }
+
+   
 
 
 }

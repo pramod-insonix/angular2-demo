@@ -22,6 +22,7 @@ export class AppComponent implements OnInit{
   imagePath : string = 'images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
   isDisable :boolean = false;
   private currentUser:UserModel;
+  applicationName:string;
 
 
  ngOnInit(){
@@ -32,6 +33,21 @@ export class AppComponent implements OnInit{
      return this.imagePath;
   }
 
+
+  public loginUser(username:string, password:string){
+	this.httpService.loginUser(username, password).subscribe(
+						response => {
+							if(response.error) { 
+	                        	alert(`The user could not be loggin, server Error.`);
+	                        } else {
+	                        	//this.usersList = response.users;
+	                        }
+                        },
+                       error=> { 
+                       		alert(`The user could not be login, server Error.`);
+                       	}
+                    );
+  }
   
 
   public loadAllUsers(){

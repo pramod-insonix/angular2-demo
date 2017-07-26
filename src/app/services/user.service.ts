@@ -26,7 +26,11 @@ export class UserService {
    }
 
 
-   
+    public loginUser(username:string, password:string){
+      return this.http.get(this.BASE_URL + "user/auth/" + username +"/"+ password)
+			.map((res:Response) => res.json())
+			.catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
 
 
 
@@ -72,15 +76,6 @@ export class UserService {
 			.map((res:Response) => res.json())
 			.catch((error:any) => Observable.throw(error.json().error || 'Server error'));
          }
-
-//  let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-//      let cpParams = new URLSearchParams();
-//      cpParams.set('id', articleId);			
-//      let options = new RequestOptions({ headers: cpHeaders, params: cpParams });
-//      return this.http.delete(this.articleUrl, options)
-// 	   .map(success => success.status)
-// 	   .catch(this.handleError);
-
 
 
 	}
